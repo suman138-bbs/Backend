@@ -1,6 +1,26 @@
 const express = require('express')
 const app = express()
 const PORT = 4000
+
+/*
+ * Swagger-api related
+ * Load swagger from yaml file
+ * To load your swagger specification yaml file you need to use a module able to convert yaml to json; for instance yaml.
+ * 
+ *     
+ */
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+const fs = require("fs")
+const YAML = require('yaml')
+
+const file  = fs.readFileSync('./swagger.yaml', 'utf8')
+const swaggerDocument = YAML.parse(file)
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
+// Routing/////////////////////////////////////////////////
 app.get('/', (req, res) => {
     res.status(200).send("<h1>Hello Wold</h1>")
 })

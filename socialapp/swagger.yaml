@@ -1,0 +1,21 @@
+openapi: 3.0.0
+info:
+  title: Social App
+  description: Our First app-Suman Bhandari
+  version: 1.0.1
+
+servers:
+  - url: http://localhost:4000
+  - description: Base Route
+
+paths:
+  /instagram:
+    get:
+      summary: return username,followers
+      responses:
+        "200": # status code
+          description: return an object
+          content:
+            application/json:
+              schema:
+                type: object

@@ -14,22 +14,38 @@ const courses = [{
     id: "11",
     name: "Django"
 },
-    {
+{
         id: "22",
         name:"JavaScript"
     },
-    {
+{
         id: "33",
         name:"React"
-    }
+},
+{
+        id: "44",
+        name:"NEXT"
+ }   
+
 ]
 
 app.get("/", (req, res) => {
     res.send("Hello from Server");
 });
 
-app.get("/courses/:courseId", (req, res) => {
-    
+app.get("/courses/mycourse/:courseId", (req, res) => {
+const mycourse = courses.find((course) => {return course.id == req.params.courseId })
+
+res.send(mycourse)
 });
+
+
+app.post("/addcourse", (req, res) => {
+    console.log('')
+    
+})
+
+
+
 
 app.listen(4000,()=>console.log(`server is running PORT 4000...`))

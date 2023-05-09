@@ -6,4 +6,4 @@ function fetchCustom(url) {
     },3000)
 }
 
-let response=fetchCustom()
+let response = fetchCustom()
